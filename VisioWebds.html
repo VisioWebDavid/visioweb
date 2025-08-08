@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Visioweb | Diseño Profesional</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000000;
+      color: #f0f0f0;
+    }
+
+    /* MENU */
+    nav {
+      background-color: #ffffff;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background-color: #d4af37;
+      color: #000;
+    }
+
+    /* HEADER */
+    header {
+      padding: 120px 20px 40px; /* un poco más padding arriba para el nav fijo */
+      text-align: center;
+      color: #d4af37;
+      font-family: 'Montserrat', sans-serif;
+      user-select: none;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      font-weight: 700;
+      text-shadow: 0 0 12px #d4af37;
+    }
+
+    header img {
+      margin-top: 20px;
+      width: 120px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #d4af37);
+    }
+
+    /* SECCIONES */
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px 70px;
+      border-radius: 15px;
+      box-sizing: border-box;
+    }
+
+    #inicio {
+      background-color: #111111;
+      color: #f0e68c;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      user-select: text;
+    }
+
+    #servicios {
+      background-color: #001f3f;
+      color: #f1c40f;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: inset 0 0 30px #d4af37aa;
+    }
+
+    .planes {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .plan {
+      background-color: #111f3f;
+      border: 2px solid #d4af37;
+      padding: 24px;
+      border-radius: 18px;
+      width: 280px;
+      text-align: left;
+      user-select: none;
+      box-shadow: 0 0 10px #d4af37aa;
+      transition: transform 0.3s ease;
+      color: #f1c40f;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
+    }
+
+    .plan:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px #d4af37cc;
+    }
+
+    .plan h3 {
+      color: #f1c40f;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .plan ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .plan li {
+      margin-bottom: 12px;
+      font-size: 1.1em;
+    }
+
+    #ejemplos {
+      background-color: #111111;
+      color: #f0e68c;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      user-select: text;
+    }
+
+    .ejemplo-descripcion {
+      max-width: 850px;
+      margin: 10px auto 30px;
+      font-size: 1.15em;
+      color: #f0e68c;
+      line-height: 1.4;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .imagenes-ejemplo {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .imagenes-ejemplo img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 8px #d4af37aa;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .imagenes-ejemplo img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #d4af37ff;
+    }
+
+    /* FORMULARIO */
+    #formulario {
+      background-color: #add8e6;
+      color: #000;
+      font-family: 'Roboto', sans-serif;
+      padding-bottom: 70px;
+      border-radius: 15px;
+    }
+
+    form {
+      background-color: #e6f0fa;
+      border-radius: 15px;
+      padding: 35px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: left;
+      box-shadow: 0 0 15px #4a90e2aa;
+      user-select: none;
+      color: #000;
+      font-family: 'Roboto', sans-serif;
+      position: relative;
+      scroll-margin-top: 80px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 700;
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    form input[type="text"],
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 2px solid #4a90e2;
+      border-radius: 10px;
+      font-size: 1em;
+      font-family: inherit;
+      resize: vertical;
+      user-select: text;
+      transition: border-color 0.3s ease;
+    }
+
+    form input[type="text"]:focus,
+    form textarea:focus,
+    form select:focus {
+      border-color: #d4af37;
+      outline: none;
+    }
+
+    form textarea {
+      min-height: 80px;
+    }
+
+    form button {
+      margin-top: 28px;
+      padding: 14px 25px;
+      background-color: #004080;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.15em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      font-family: 'Montserrat', sans-serif;
+      width: 100%;
+    }
+
+    form button:hover {
+      background-color: #003366;
+    }
+
+    /* Dropdown estilo personalizado */
+    .dropdown {
+      position: relative;
+      user-select: none;
+      margin-top: 8px;
+    }
+
+    .dropdown-button {
+      width: 100%;
+      background-color: #4a90e2;
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      border: none;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 6px #003366cc;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-button:hover {
+      background-color: #357ABD;
+    }
+
+    .dropdown-button::after {
+      content: "▼";
+      font-size: 0.9em;
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown.open .dropdown-button::after {
+      transform: rotate(-180deg);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #e6f0fa;
+      border-radius: 0 0 10px 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 10;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 20px;
+      gap: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #4a90e2 #d4daf7;
+    }
+
+    .checkbox-group label {
+      background: #d4daf7;
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: #000;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 0 5px #4a90e299;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-group label:hover {
+      background-color: #a5bdf5;
+    }
+
+    .checkbox-group input[type="checkbox"],
+    .checkbox-group input[type="radio"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Ocultar input texto inicialmente */
+    .input-otros {
+      margin-top: 8px;
+      display: none;
+    }
+
+    .input-otros input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #4a90e2;
+      border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1em;
+    }
+
+    /* Para radio buttons en negocio */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 20px;
+      gap: 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #4a90e2 #d4daf7;
+    }
+
+    .radio-group label {
+      background: #d4daf7;
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: #000;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 0 5px #4a90e299;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .radio-group label:hover {
+      background-color: #a5bdf5;
+    }
+
+    .radio-group input[type="radio"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Social y footer */
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      background-color: #111111;
+      color: #d4af37;
+      user-select: none;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .social a {
+      color: #d4af37;
+      margin: 0 14px;
+      font-size: 1.7em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #f1c40f;
+    }
+
+    /* Modal imagen */
+    #modalImagen {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 20px;
+    }
+
+    #modalImagen img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #d4af37;
+      user-select: none;
+    }
+
+    /* Media queries para móviles */
+    @media (max-width: 768px) {
+      nav {
+        gap: 15px;
+        padding: 10px 10px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 1em;
+        padding: 6px 12px;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        padding: 0 10px;
+      }
+
+      header img {
+        width: 90px;
+        margin-top: 15px;
+      }
+
+      section {
+        padding: 30px 15px 50px;
+      }
+
+      .planes {
+        gap: 15px;
+      }
+
+      .plan {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+      }
+
+      .imagenes-ejemplo img {
+        width: 140px;
+      }
+
+      form {
+        padding: 25px 20px;
+        max-width: 100%;
+        margin: 0 10px;
+      }
+
+      form label {
+        margin-top: 15px;
+        font-size: 1em;
+      }
+
+      form input[type="text"],
+      form textarea,
+      form select {
+        font-size: 0.9em;
+        padding: 10px;
+      }
+
+      form button {
+        font-size: 1em;
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      nav {
+        gap: 8px;
+      }
+
+      nav a {
+        font-size: 0.9em;
+        padding: 5px 10px;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .imagenes-ejemplo img {
+        width: 120px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#ejemplos">Ejemplos</a>
+    <a href="#formulario">Pide tu Página</a>
+  </nav>
+
+  <header>
+    <h1>Visioweb | Diseño Profesional</h1>
+    <img src="https://i.postimg.cc/dVxHG2PT/logo-DAVID.jpg" alt="Logo DAVID" />
+  </header>
+
+  <section id="inicio">
+    <h2>🔥 Bienvenido a Visioweb 🔥</h2>
+    <p>Soy David y me apasiona crear páginas web profesionales con estilo y funcionalidad. Aquí encontrarás compromiso, calidad y diseño que se adapta a tus necesidades.</p>
+  </section>
+
+  <section id="servicios">
+    <h2>🛠️ Planes que Ofrezco</h2>
+    <div class="planes">
+      <div class="plan" data-plan="Página Básica" data-precio="1200">
+        <h3>Página Básica</h3>
+        <ul>
+          <li>✅ Página de presentación</li>
+          <li>✅ Contacto por WhatsApp</li>
+          <li>✅ Diseño limpio</li>
+          <li><strong>$1250 MXN</strong></li>
+        </ul>
+      </div>
+      <div class="plan" data-plan="Página Intermedia" data-precio="1700">
+        <h3>Página Intermedia</h3>
+        <ul>
+          <li>✅ Varios apartados</li>
+          <li>✅ Galería o catálogo</li>
+          <li>✅ Responsive</li>
+          <li><strong>$1700 MXN</strong></li>
+        </ul>
+      </div>
+      <div class="plan" data-plan="Página Pro" data-precio="2500">
+        <h3>Página Pro</h3>
+        <ul>
+          <li>✅ Todo lo anterior</li>
+          <li>✅ Animaciones y formularios</li>
+          <li>✅ Enlace a redes</li>
+          <li><strong>$2500 MXN</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejemplos">
+    <h2>📸 Ejemplos de mi Trabajo</h2>
+
+    <div class="ejemplo-descripcion">
+      <strong>Aridelsy | Makeup Studio:</strong> Esta es una página creada para nuestra amiga Aridelsy, para su empresa de maquillaje.
+    </div>
+    <div class="imagenes-ejemplo">
+      <img src="https://i.postimg.cc/vmYwTLyF/pag1-ailin.jpg" alt="Aridelsy Makeup Studio 1" />
+      <img src="https://i.postimg.cc/26ts0sZr/pag2-ailin.jpg" alt="Aridelsy Makeup Studio 2" />
+      <img src="https://i.postimg.cc/YC3qdSq7/pag3-ailin.jpg" alt="Aridelsy Makeup Studio 3" />
+      <img src="https://i.postimg.cc/5tK9MkCk/pag4-1-ailin.jpg" alt="Aridelsy Makeup Studio 4" />
+    </div>
+
+    <div class="ejemplo-descripcion">
+      <strong>Starwrap:</strong> Esta es una página para nuestro amigo de Starwrap donde muestra los trabajos que realiza y sus proyectos ya realizados.
+    </div>
+    <div class="imagenes-ejemplo">
+      <img src="https://i.postimg.cc/bvr8LHB0/fer1.jpg" alt="Starwrap 1" />
+      <img src="https://i.postimg.cc/j5JTYqKL/fer2.jpg" alt="Starwrap 2" />
+      <img src="https://i.postimg.cc/dVSgQM5d/fer3.jpg" alt="Starwrap 3" />
+    </div>
+  </section>
+
+  <section id="formulario">
+    <h2>📨 ¡Pide tu Página Ahora!</h2>
+    <form onsubmit="enviarWhatsApp(); return false;">
+      <label>Tu nombre:</label>
+      <input type="text" id="nombre" required />
+
+      <label>Nombre de tu empresa:</label>
+      <input type="text" id="empresa" placeholder="Ejemplo: Salón de Belleza 'Aridelsy'" required />
+
+      <label>¿Cuál es tu negocio? (elige sólo uno):</label>
+      <div class="dropdown" id="dropdownNegocio">
+        <button type="button" class="dropdown-button" onclick="toggleDropdown('dropdownNegocio')">Selecciona uno ▼</button>
+        <div class="dropdown-content">
+          <div class="radio-group">
+            <label><input type="radio" name="negocio" value="Salón de belleza" /> Salón de belleza</label>
+            <label><input type="radio" name="negocio" value="Venta de celulares" /> Venta de celulares</label>
+            <label><input type="radio" name="negocio" value="Restaurante" /> Restaurante</label>
+            <label><input type="radio" name="negocio" value="Tienda de ropa" /> Tienda de ropa</label>
+            <label><input type="radio" name="negocio" value="Otros" id="negocioOtrosRadio" onchange="toggleInputOtros('negocio')" /> Otros</label>
+          </div>
+          <div class="input-otros" id="negocioOtrosInput">
+            <input type="text" id="negocioOtrosTexto" placeholder="Escribe tu negocio" />
+          </div>
+        </div>
+      </div>
+
+      <label>Colores que quieres usar (puedes elegir varios):</label>
+      <div class="dropdown" id="dropdownColores">
+        <button type="button" class="dropdown-button" onclick="toggleDropdown('dropdownColores')">Selecciona colores ▼</button>
+        <div class="dropdown-content">
+          <div class="checkbox-group" id="checkboxColores">
+            <label><input type="checkbox" value="Negro" /> Negro</label>
+            <label><input type="checkbox" value="Rojo" /> Rojo</label>
+            <label><input type="checkbox" value="Dorado" /> Dorado</label>
+            <label><input type="checkbox" value="Azul" /> Azul</label>
+            <label><input type="checkbox" value="Blanco" /> Blanco</label>
+            <label><input type="checkbox" value="Verde" /> Verde</label>
+            <label><input type="checkbox" value="Morado" /> Morado</label>
+            <label><input type="checkbox" value="Naranja" /> Naranja</label>
+            <label><input type="checkbox" value="Otros" id="coloresOtrosCheckbox" onchange="toggleInputOtros('colores')" /> Otros</label>
+          </div>
+          <div class="input-otros" id="coloresOtrosInput">
+            <input type="text" id="coloresOtrosTexto" placeholder="Escribe colores adicionales" />
+          </div>
+        </div>
+      </div>
+
+      <label>¿Quieres que te contacten por WhatsApp? 📱</label>
+      <select id="whatsapp" required>
+        <option value="" disabled selected>-- Selecciona una opción --</option>
+        <option value="Sí, mensajes directos">Sí, mensajes directos</option>
+        <option value="No, prefiero contacto manual">No, prefiero contacto manual</option>
+      </select>
+
+      <label>¿Algo extra que quieras que sepa? 📝</label>
+      <textarea id="extra" placeholder="Ejemplo: Necesito que la página tenga galería de fotos."></textarea>
+
+      <!-- Campo oculto para plan elegido -->
+      <input type="hidden" id="planElegido" name="planElegido" />
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </section>
+
+  <footer>
+    <div>© 2025 Visioweb. Todos los derechos reservados.</div>
+    <div class="social">
+      <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+      <a href="https://wa.me/526677975519" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
+    </div>
+  </footer>
+
+  <div id="modalImagen" onclick="cerrarModal(event)">
+    <img id="imagenModal" src="" alt="Imagen ampliada" />
+  </div>
+
+  <script>
+    // Modal imagen
+    const modal = document.getElementById('modalImagen');
+    const imagenModal = document.getElementById('imagenModal');
+    const imagenes = document.querySelectorAll('.imagenes-ejemplo img');
+
+    imagenes.forEach(img => {
+      img.addEventListener('click', () => {
+        imagenModal.src = img.src;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function cerrarModal(event) {
+      if (event && event.target === imagenModal) return;
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      imagenModal.src = '';
+    }
+
+    // Dropdown toggle general
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      const isOpen = dropdown.classList.contains('open');
+      // Close all dropdowns first
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      // Toggle current dropdown
+      if (!isOpen) dropdown.classList.add('open');
+    }
+
+    // Cerrar dropdown si se clickea afuera
+    window.addEventListener('click', e => {
+      if (!e.target.closest('.dropdown-button')) {
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      }
+    });
+
+    // Mostrar/ocultar input Otros
+    function toggleInputOtros(tipo) {
+      if(tipo === 'negocio') {
+        const radioOtros = document.getElementById('negocioOtrosRadio');
+        const inputOtros = document.getElementById('negocioOtrosInput');
+        inputOtros.style.display = radioOtros.checked ? 'block' : 'none';
+      } else if (tipo === 'colores') {
+        const checkboxOtros = document.getElementById('coloresOtrosCheckbox');
+        const inputOtros = document.getElementById('coloresOtrosInput');
+        inputOtros.style.display = checkboxOtros.checked ? 'block' : 'none';
+      }
+    }
+
+    // Enviar WhatsApp con emojis y formato mejorado
+    function enviarWhatsApp() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const empresa = document.getElementById('empresa').value.trim();
+
+      // Negocio: sólo 1 radio o input otros
+      let negocio = '';
+      const radios = document.querySelectorAll('input[name="negocio"]');
+      let otroNegocioTexto = document.getElementById('negocioOtrosTexto').value.trim();
+      for (const r of radios) {
+        if (r.checked && r.value !== 'Otros') {
+          negocio = r.value;
+          break;
+        }
+      }
+      if (!negocio && otroNegocioTexto.length > 0) {
+        negocio = otroNegocioTexto;
+      }
+      if (!negocio) negocio = 'No especificado';
+
+      // Colores: todos los checkboxes seleccionados + input otros si está
+      const checkboxes = document.querySelectorAll('#checkboxColores input[type="checkbox"]:checked');
+      let coloresArray = [];
+      checkboxes.forEach(c => {
+        if (c.value !== 'Otros') coloresArray.push(c.value);
+      });
+      let otrosColores = document.getElementById('coloresOtrosTexto').value.trim();
+      if (otrosColores) coloresArray.push(otrosColores);
+      const colores = coloresArray.length ? coloresArray.join(', ') : 'Ninguno';
+
+      const whatsappSelect = document.getElementById('whatsapp');
+      const whatsapp = whatsappSelect.options[whatsappSelect.selectedIndex]?.value || 'No especificado';
+
+      const extra = document.getElementById('extra').value.trim() || 'Nada';
+
+      const planElegido = document.getElementById('planElegido').value || 'No especificado';
+
+      const mensaje =
+        `👋 Hola, soy *${nombre}* 🧑‍💻\n` +
+        `🏢 Empresa: *${empresa}*\n` +
+        `💬 Quiero una página para mi negocio: *${negocio}* 👀\n` +
+        `💻 Plan elegido: *${planElegido}*\n\n` +
+        `🎨 Colores que quiero usar: ${colores}\n` +
+        `📲 ¿Mensajes por WhatsApp?: ${whatsapp}\n` +
+        `📝 Observaciones extras: ${extra}`;
+
+      const numero = "6677975519"; // tu número sin espacios ni símbolos
+      const url = `https://wa.me/52${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+
+      document.querySelector('form').reset();
+
+      document.getElementById('negocioOtrosInput').style.display = 'none';
+      document.getElementById('coloresOtrosInput').style.display = 'none';
+
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      document.querySelector('#dropdownNegocio .dropdown-button').textContent = 'Selecciona uno ▼';
+      document.querySelector('#dropdownColores .dropdown-button').textContent = 'Selecciona colores ▼';
+
+      // Limpiar plan elegido también
+      document.getElementById('planElegido').value = '';
+    }
+
+    // Cambiar texto del dropdown botón cuando se selecciona opción (negocio)
+    const radiosNegocio = document.querySelectorAll('input[name="negocio"]');
+    radiosNegocio.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const btn = document.querySelector('#dropdownNegocio .dropdown-button');
+        if(radio.checked){
+          btn.textContent = radio.value + " ▼";
+        }
+      });
+    });
+
+    // Cambiar texto botón colores con selección múltiple
+    const checkboxesColores = document.querySelectorAll('#checkboxColores input[type="checkbox"]');
+    checkboxesColores.forEach(chk => {
+      chk.addEventListener('change', () => {
+        const btn = document.querySelector('#dropdownColores .dropdown-button');
+        const selected = Array.from(checkboxesColores)
+          .filter(c => c.checked && c.value !== 'Otros')
+          .map(c => c.value);
+
+        if(selected.length === 0) {
+          btn.textContent = 'Selecciona colores ▼';
+        } else if (selected.length <= 3) {
+          btn.textContent = selected.join(', ') + ' ▼';
+        } else {
+          btn.textContent = selected.length + ' colores seleccionados ▼';
+        }
+      });
+    });
+
+    // Al hacer clic en un plan, abrir el formulario y asignar el plan elegido
+    const planes = document.querySelectorAll('.plan');
+    const formularioSection = document.getElementById('formulario');
+    const planInput = document.getElementById('planElegido');
+
+    planes.forEach(plan => {
+      plan.addEventListener('click', () => {
+        const nombrePlan = plan.getAttribute('data-plan');
+        const precioPlan = plan.getAttribute('data-precio');
+        planInput.value = `${nombrePlan} - $${precioPlan} MXN`;
+        // Scroll suave hasta el formulario
+        formularioSection.scrollIntoView({behavior: 'smooth'});
+      });
+    });
+  </script>
+
+</body>
+</html>
